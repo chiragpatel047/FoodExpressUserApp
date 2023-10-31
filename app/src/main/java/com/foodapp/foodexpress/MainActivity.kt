@@ -15,7 +15,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.foodapp.foodexpress.Screens.EnableLoactionScreen
+import com.foodapp.foodexpress.Screens.LiveUpdateScreen
 import com.foodapp.foodexpress.Screens.LoginScreen
+import com.foodapp.foodexpress.Screens.MainScreen
 import com.foodapp.foodexpress.Screens.OnBoardingScreen
 import com.foodapp.foodexpress.Screens.OtpScreen
 import com.foodapp.foodexpress.Screens.StarterScreen
@@ -55,6 +57,12 @@ class MainActivity : ComponentActivity() {
             }
             composable(route = "enableLocation"){
                 EnableLoactionScreen(navController)
+            }
+            composable(route = "liveUpdate"){
+                LiveUpdateScreen(navController)
+            }
+            composable(route = "main"){
+                MainScreen(navController)
             }
         }
     }

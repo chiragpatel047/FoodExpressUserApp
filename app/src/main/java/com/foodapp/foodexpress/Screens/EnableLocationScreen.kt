@@ -30,18 +30,17 @@ fun EnableLoactionScreen(navController: NavController) {
         HeadingText(text = "What is Your Location?")
 
         Content2Text(
-            text = "We need your location to show available restaurant & Productsṣ",
+            text = "We need your location to show available restaurant & Products",
             textAlign = TextAlign.Center
         )
 
         Spacer(modifier = Modifier.padding(20.dp))
 
-
         OrangeRoundedButton(label = "Allow Location Access") {
-
+            navController.navigate("liveUpdate")
         }
         TransparentOrangeTextRoundedButton(label = "Now now") {
-            
+            navController.navigate("liveUpdate")
         }
     }
 }
