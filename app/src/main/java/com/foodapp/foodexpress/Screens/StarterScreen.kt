@@ -2,6 +2,7 @@ package com.foodapp.foodexpress.Screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -30,11 +31,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.foodapp.foodexpress.Components.ContentText
+import com.foodapp.foodexpress.Components.HeadingText
+import com.foodapp.foodexpress.Components.OrangeRoundedButton
 import com.foodapp.foodexpress.R
 
-@Preview(showBackground = true, showSystemUi = true)
+
 @Composable
-fun StarterScreen() {
+fun StarterScreen(navController: NavController) {
 
     Box(Modifier.fillMaxSize()) {
         Column(
@@ -69,44 +74,16 @@ fun StarterScreen() {
                         .padding(10.dp, 0.dp, 0.dp, 80.dp)
                         .align(alignment = Alignment.BottomCenter)
                         .scale(scale = 1.7F)
-
                 )
             }
 
             Column(modifier = Modifier.padding(0.dp, 30.dp, 0.dp, 30.dp)) {
 
-                Text(
-                    text = "Food Express App",
-                    textAlign = TextAlign.Center,
-                    fontSize = 24.sp,
-                    style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp)
-                )
-                Text(
-                    text = "Enjoy your favourite food at home at just in minutes",
-                    textAlign = TextAlign.Center,
-                    fontSize = 16.sp,
-                    style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp, 5.dp)
-                )
+                HeadingText(text = "Food Express App")
+                ContentText(text = "Enjoy your favourite food at home at just in minutes")
 
-                Button(
-                    onClick = { /*TODO*/ },
-                    colors = ButtonDefaults.buttonColors(Color(0xFFFF6736)),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(20.dp)
-                ) {
-                    Text(
-                        text = "Let's Go",
-                        fontSize = 16.sp,
-                        style = MaterialTheme.typography.titleLarge,
-                        modifier = Modifier.padding(5.dp)
-                    )
+                OrangeRoundedButton(label = "Let's Go"){
+                    navController.navigate("onBoard")
                 }
             }
         }

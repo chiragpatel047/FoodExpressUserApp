@@ -10,6 +10,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.foodapp.foodexpress.Screens.LoginScreen
+import com.foodapp.foodexpress.Screens.OnBoardingScreen
+import com.foodapp.foodexpress.Screens.OtpScreen
 import com.foodapp.foodexpress.Screens.StarterScreen
 import com.foodapp.foodexpress.ui.theme.FoodExpressTheme
 
@@ -23,9 +30,29 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    StarterScreen()
+                    App()
                 }
             }
         }
     }
+
+    @Composable
+    fun App(){
+        val navController = rememberNavController()
+        NavHost(navController = navController, startDestination = "starter"){
+            composable(route = "starter"){
+                StarterScreen(navController)
+            }
+            composable(route = "onBoard"){
+                OnBoardingScreen(navController)
+            }
+            composable(route = "login"){
+                LoginScreen(navController)
+            }
+            composable(route = "otp"){
+                OtpScreen(navController)
+            }
+        }
+    }
 }
+
