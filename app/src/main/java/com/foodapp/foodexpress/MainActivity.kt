@@ -14,6 +14,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.foodapp.foodexpress.Screens.EnableLoactionScreen
 import com.foodapp.foodexpress.Screens.LoginScreen
 import com.foodapp.foodexpress.Screens.OnBoardingScreen
 import com.foodapp.foodexpress.Screens.OtpScreen
@@ -51,6 +52,9 @@ class MainActivity : ComponentActivity() {
             }
             composable(route = "otp"){
                 OtpScreen(navController)
+            }
+            composable(route = "enableLocation"){
+                EnableLoactionScreen(navController)
             }
         }
     }

@@ -3,6 +3,7 @@ package com.foodapp.foodexpress.Components
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -43,7 +44,7 @@ fun OrangeRoundedButton(label: String, onClick: () -> Unit) {
         colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.primary),
         modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp,10.dp,20.dp,5.dp)
+            .padding(20.dp, 10.dp, 20.dp, 5.dp)
     ) {
         Text(
             text = label,
@@ -64,7 +65,7 @@ fun HeadingText(text: String) {
         style = MaterialTheme.typography.titleLarge,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp,10.dp,20.dp,10.dp)
+            .padding(20.dp, 10.dp, 20.dp, 10.dp)
     )
 }
 
@@ -94,14 +95,16 @@ fun Content2Text(text: String, textAlign: TextAlign) {
 }
 
 @Composable
-fun OutlinedCustomButton(imageIcon: Int,alpha : Float, onClick: () -> Unit) {
+fun OutlinedCustomButton(imageIcon: Int, alpha: Float, onClick: () -> Unit) {
     OutlinedButton(
         onClick = onClick,
-        modifier = Modifier.size(50.dp).alpha(alpha = alpha),  //avoid the oval shape
+        modifier = Modifier
+            .size(50.dp)
+            .alpha(alpha = alpha),  //avoid the oval shape
         shape = CircleShape,
         border = BorderStroke(1.dp, MaterialTheme.colorScheme.primary),
         contentPadding = PaddingValues(15.dp),  //avoid the little icon
-        colors = ButtonDefaults.outlinedButtonColors(contentColor =  MaterialTheme.colorScheme.primary)
+        colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.primary)
     ) {
         Icon(
             painterResource(id = imageIcon),
@@ -119,7 +122,7 @@ fun OutlinedCustomImageButton(imageIcon: Int, onClick: () -> Unit) {
         shape = CircleShape,
         border = BorderStroke(1.dp, Color.LightGray),
         contentPadding = PaddingValues(15.dp),
-        colors = ButtonDefaults.outlinedButtonColors(containerColor =  Color.White)
+        colors = ButtonDefaults.outlinedButtonColors(containerColor = Color.White)
 
     ) {
         Icon(
@@ -129,6 +132,25 @@ fun OutlinedCustomImageButton(imageIcon: Int, onClick: () -> Unit) {
         )
     }
 }
+
+@Composable
+fun OutlinedSimpleImageButton(imageIcon: Int, onClick: () -> Unit) {
+    OutlinedButton(
+        onClick = onClick,
+        modifier = Modifier.size(40.dp),  //avoid the oval shape
+        shape = CircleShape,
+        border = BorderStroke(1.dp, Color.LightGray),
+        contentPadding = PaddingValues(12.dp)
+
+    ) {
+        Icon(
+            painterResource(id = imageIcon),
+            contentDescription = "",
+            tint = Color.LightGray
+        )
+    }
+}
+
 
 @Composable
 fun FilledCustomButton(imageIcon: Int, onClick: () -> Unit) {
@@ -154,14 +176,16 @@ fun FilledCustomButton(imageIcon: Int, onClick: () -> Unit) {
 }
 
 @Composable
-fun subjectImage(image : Int){
-    Image(painter = painterResource(id = image),
+fun subjectImage(image: Int) {
+    Image(
+        painter = painterResource(id = image),
         contentDescription = "",
-        modifier = Modifier.padding(30.dp,30.dp,30.dp,0.dp))
+        modifier = Modifier.padding(30.dp, 30.dp, 30.dp, 0.dp)
+    )
 }
 
 @Composable
-fun textBetweenTwoLines(text : String){
+fun textBetweenTwoLines(text: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -189,4 +213,9 @@ fun textBetweenTwoLines(text : String){
                 .background(Color.LightGray)
         )
     }
+}
+
+@Composable
+fun otpSingleBox(text : String) {
+    Text(text = text, Modifier.border(1.dp, Color.LightGray, RoundedCornerShape(50.dp)).size(50.dp))
 }
