@@ -65,6 +65,8 @@ import com.foodapp.foodexpress.R
 fun LoginScreen(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
         Column {
+            Spacer(modifier = Modifier.padding(20.dp))
+
             subjectImage(image = R.drawable.loginimage)
             HeadingText(text = "Your Seamless Food Delivery App")
 

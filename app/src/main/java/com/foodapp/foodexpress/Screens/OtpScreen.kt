@@ -170,7 +170,7 @@ fun OtpScreen(navController: NavController) {
             )
             Spacer(modifier = Modifier.padding(20.dp))
             OrangeRoundedButton(label = "Verify OTP") {
-
+                navController.navigate("enableLocation")
             }
         }
     }

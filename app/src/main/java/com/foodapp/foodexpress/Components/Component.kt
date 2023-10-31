@@ -57,15 +57,35 @@ fun OrangeRoundedButton(label: String, onClick: () -> Unit) {
 }
 
 @Composable
+fun TransparentOrangeTextRoundedButton(label: String, onClick: () -> Unit) {
+    Button(
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(Color.Transparent),
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp, 10.dp, 20.dp, 5.dp)
+    ) {
+        Text(
+            text = label,
+            fontSize = 16.sp,
+            color = MaterialTheme.colorScheme.primary,
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier
+                .padding(5.dp)
+        )
+    }
+}
+
+@Composable
 fun HeadingText(text: String) {
     Text(
         text = text,
         textAlign = TextAlign.Center,
-        fontSize = 24.sp,
+        fontSize = 22.sp,
         style = MaterialTheme.typography.titleLarge,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp, 10.dp, 20.dp, 10.dp)
+            .padding(30.dp, 10.dp, 30.dp, 10.dp)
     )
 }
 
@@ -93,6 +113,7 @@ fun Content2Text(text: String, textAlign: TextAlign) {
             .padding(20.dp, 5.dp)
     )
 }
+
 
 @Composable
 fun OutlinedCustomButton(imageIcon: Int, alpha: Float, onClick: () -> Unit) {
@@ -180,7 +201,7 @@ fun subjectImage(image: Int) {
     Image(
         painter = painterResource(id = image),
         contentDescription = "",
-        modifier = Modifier.padding(30.dp, 30.dp, 30.dp, 0.dp)
+        modifier = Modifier.padding(40.dp, 40.dp, 40.dp, 0.dp)
     )
 }
 
