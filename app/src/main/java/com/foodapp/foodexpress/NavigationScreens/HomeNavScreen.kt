@@ -13,12 +13,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -41,14 +44,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.foodapp.foodexpress.Components.CategorySingle
+import com.foodapp.foodexpress.Components.DishSingle
 import com.foodapp.foodexpress.Components.GrayFilledSimpleButton
 import com.foodapp.foodexpress.Components.HeadingText
 import com.foodapp.foodexpress.Components.OnBoard
+import com.foodapp.foodexpress.Components.RestaurantSingle
 import com.foodapp.foodexpress.Components.SpecialForYouSingle
 import com.foodapp.foodexpress.Components.boldText
 import com.foodapp.foodexpress.Components.normalText
 import com.foodapp.foodexpress.Components.textWithSeeAllText
 import com.foodapp.foodexpress.Models.CatModel
+import com.foodapp.foodexpress.Models.DishModel
+import com.foodapp.foodexpress.Models.RestaurantModel
 import com.foodapp.foodexpress.R
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -56,6 +63,10 @@ import com.foodapp.foodexpress.R
 fun HomeNavScreen() {
 
     var catList: ArrayList<CatModel> = ArrayList()
+    var dishList: ArrayList<DishModel> = ArrayList()
+    var restaurantList: ArrayList<RestaurantModel> = ArrayList()
+
+    val scrollState = rememberScrollState()
 
     catList.add(CatModel("Pizza", R.drawable.temp_cat_1))
     catList.add(CatModel("Burger", R.drawable.temp_cat_2))
@@ -63,7 +74,46 @@ fun HomeNavScreen() {
     catList.add(CatModel("Momos", R.drawable.temp_cat_4))
     catList.add(CatModel("Frankie", R.drawable.temp_cat_5))
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    dishList.add(DishModel(R.drawable.temp_cat_4, "Baked Momos", "4.9", "Gokuram"))
+    dishList.add(DishModel(R.drawable.temp_cat_5, "Cheezy Frankie", "4.7", "Urban Food"))
+    dishList.add(DishModel(R.drawable.temp_cat_2, "Chicken Burger", "3.9", "Azay's"))
+    dishList.add(DishModel(R.drawable.temp_cat_1, "Rotten Pizza", "4.3", "Rotten Tomato"))
+    dishList.add(DishModel(R.drawable.temp_cat_3, "Crispy Noodle ", "3.3", "Gokuram"))
+
+
+    restaurantList.add(
+        RestaurantModel(
+            R.drawable.temp_res_1,
+            "Green Jalapenzo",
+            "Chicken Burger, Pizza, Tanduri, Rayta...",
+            "4.9",
+            "251 Ring Road Athwalines, Surat 395004"
+        )
+    )
+    restaurantList.add(
+        RestaurantModel(
+            R.drawable.temp_res_2,
+            "Gokuram",
+            "Gujarati Thaali, Punjabi Thaali, South Indian...",
+            "4.6",
+            "91 R.k.Desai Road Kamrej, Surat 385014"
+        )
+    )
+//    restaurantList.add(
+//        RestaurantModel(
+//            R.drawable.temp_res_1,
+//            "Real Pizza",
+//            "Chicken Pizza, Tanduri Pizza, Roll Pizza...",
+//            "4.1",
+//            "651 Makai Road Varachcha, Surat 405184"
+//        )
+//    )
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(scrollState)
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -193,9 +243,34 @@ fun HomeNavScreen() {
             }
         }
 
+        Spacer(modifier = Modifier.padding(4.dp))
+
         textWithSeeAllText("Popular Dishes")
 
+        LazyRow() {
+            items(items = dishList) {
+                DishSingle(
+                    dishImage = it.dishImage,
+                    dishName = it.dishName,
+                    dishResName = it.dishResName,
+                    dishRating = it.dishRating
+                )
+            }
+        }
 
+        Spacer(modifier = Modifier.padding(4.dp))
+
+        textWithSeeAllText("Top Rated Restaurant")
+
+        restaurantList.forEach {
+            RestaurantSingle(
+                it.resImage,
+                it.resName,
+                it.resTopItems,
+                it.resRating,
+                it.resAddress
+            )
+        }
 
     }
 }

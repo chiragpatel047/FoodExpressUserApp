@@ -317,7 +317,7 @@ fun textWithSeeAllText(title: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp, 20.dp, 20.dp, 10.dp),
+            .padding(20.dp, 10.dp, 20.dp, 10.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {

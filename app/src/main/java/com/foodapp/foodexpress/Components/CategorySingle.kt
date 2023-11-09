@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -32,7 +33,8 @@ fun CategorySingle(backImage: Int, catName: String) {
         modifier = Modifier
             .height(60.dp)
             .width(110.dp)
-            .padding(5.dp, 10.dp, 10.dp, 5.dp)
+            .padding(5.dp, 0.dp, 10.dp, 5.dp)
+            .shadow(5.dp, RoundedCornerShape(50.dp))
             .clip(RoundedCornerShape(50.dp)),
         contentAlignment = Alignment.Center
     ) {

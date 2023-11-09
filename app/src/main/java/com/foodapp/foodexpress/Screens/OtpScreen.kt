@@ -51,7 +51,7 @@ fun OtpScreen(navController: NavController) {
             Column(
                 modifier = Modifier
                     .padding(0.dp, 0.dp, 0.dp, 30.dp)
-                    .background(Color(0x1AFF3E00))
+                    .background(MaterialTheme.colorScheme.secondaryContainer)
             ) {
                 Spacer(modifier = Modifier.padding(10.dp))
                 Box(
