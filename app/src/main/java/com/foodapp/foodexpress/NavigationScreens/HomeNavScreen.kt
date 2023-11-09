@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -34,20 +36,33 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.foodapp.foodexpress.Components.CategorySingle
 import com.foodapp.foodexpress.Components.GrayFilledSimpleButton
 import com.foodapp.foodexpress.Components.HeadingText
 import com.foodapp.foodexpress.Components.OnBoard
 import com.foodapp.foodexpress.Components.SpecialForYouSingle
 import com.foodapp.foodexpress.Components.boldText
 import com.foodapp.foodexpress.Components.normalText
+import com.foodapp.foodexpress.Components.textWithSeeAllText
+import com.foodapp.foodexpress.Models.CatModel
 import com.foodapp.foodexpress.R
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun HomeNavScreen() {
+
+    var catList: ArrayList<CatModel> = ArrayList()
+
+    catList.add(CatModel("Pizza", R.drawable.temp_cat_1))
+    catList.add(CatModel("Burger", R.drawable.temp_cat_2))
+    catList.add(CatModel("Noodle", R.drawable.temp_cat_3))
+    catList.add(CatModel("Momos", R.drawable.temp_cat_4))
+    catList.add(CatModel("Frankie", R.drawable.temp_cat_5))
+
     Column(modifier = Modifier.fillMaxSize()) {
         Row(
             modifier = Modifier
@@ -140,7 +155,7 @@ fun HomeNavScreen() {
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
             style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.padding(20.dp, 10.dp, 20.dp, 5.dp)
+            modifier = Modifier.padding(20.dp, 20.dp, 20.dp, 5.dp)
         )
 
         val pagerState = rememberPagerState(
@@ -154,21 +169,33 @@ fun HomeNavScreen() {
         HorizontalPager(state = pagerState) {
             when (it) {
                 0 -> {
-                    SpecialForYouSingle(R.drawable.temp_food_banner_1, "40")
+                    SpecialForYouSingle(R.drawable.temp_food_banner_1, "40", "1")
 
                 }
 
                 1 -> {
-                    SpecialForYouSingle(R.drawable.temp_food_banner_1, "20")
+                    SpecialForYouSingle(R.drawable.temp_food_banner_2, "20", "2")
 
                 }
 
                 2 -> {
-                    SpecialForYouSingle(R.drawable.temp_food_banner_1, "65")
+                    SpecialForYouSingle(R.drawable.temp_food_banner_3, "65", "3")
 
                 }
             }
         }
+
+        textWithSeeAllText("Categories")
+
+        LazyRow() {
+            items(items = catList) {
+                CategorySingle(backImage = it.catImage, catName = it.catName)
+            }
+        }
+
+        textWithSeeAllText("Popular Dishes")
+
+
 
     }
 }

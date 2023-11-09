@@ -4,6 +4,7 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -309,3 +310,37 @@ fun textBetweenTwoLines(text: String) {
         )
     }
 }
+
+@Composable
+fun textWithSeeAllText(title: String) {
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp, 20.dp, 20.dp, 10.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+
+
+        Text(
+            text = title,
+            textAlign = TextAlign.Start,
+            fontSize = 18.sp,
+            color = MaterialTheme.colorScheme.onBackground,
+            fontWeight = FontWeight.Bold,
+            style = MaterialTheme.typography.titleLarge
+        )
+
+        Text(
+            text = "See All",
+            textAlign = TextAlign.Start,
+            fontSize = 12.sp,
+            color = MaterialTheme.colorScheme.primary,
+            style = MaterialTheme.typography.titleLarge
+        )
+
+    }
+
+}
+

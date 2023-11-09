@@ -33,7 +33,7 @@ import androidx.compose.ui.unit.sp
 import com.foodapp.foodexpress.R
 
 @Composable
-fun SpecialForYouSingle(backImage: Int, discount: String) {
+fun SpecialForYouSingle(backImage: Int, discount: String, currentPage: String) {
 
     val gradientVerticalBrush = Brush.verticalGradient(
         colors = listOf(Color.Transparent, Color(0x73000000)), // Gradient colors
@@ -91,24 +91,49 @@ fun SpecialForYouSingle(backImage: Int, discount: String) {
         ) {
 
             Row(
-                modifier = Modifier
-                    .padding(10.dp)
-                    .clip(RoundedCornerShape(50.dp))
-                    .background(Color.White)
-                    .clickable {
-
-                    }
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(
-                    text = "Limited time!",
-                    fontSize = 10.sp,
-                    color = Color.DarkGray,
-                    style = MaterialTheme.typography.titleLarge,
-                    modifier = Modifier
-                        .padding(15.dp, 8.dp, 15.dp, 5.dp)
 
-                )
+                Row(
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .clip(RoundedCornerShape(50.dp))
+                        .background(Color.White)
+                        .clickable {
+
+                        }
+                ) {
+                    Text(
+                        text = "Limited time!",
+                        fontSize = 10.sp,
+                        color = Color.DarkGray,
+                        style = MaterialTheme.typography.titleLarge,
+                        modifier = Modifier
+                            .padding(15.dp, 8.dp, 15.dp, 5.dp)
+
+                    )
+                }
+
+                Row(
+                    modifier = Modifier
+                        .padding(10.dp)
+                        .clip(RoundedCornerShape(50.dp))
+                        .background(Color(0x99000000))
+
+                ) {
+                    Text(
+                        text = currentPage + "/3",
+                        fontSize = 10.sp,
+                        color = Color.White,
+                        style = MaterialTheme.typography.titleLarge,
+                        modifier = Modifier
+                            .padding(15.dp, 8.dp, 15.dp, 5.dp)
+
+                    )
+                }
             }
+
             Text(
                 text = "Get Special Discount\nUp to " + discount + "%",
                 textAlign = TextAlign.Start,
