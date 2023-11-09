@@ -13,8 +13,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -23,7 +25,13 @@ import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -31,8 +39,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.foodapp.foodexpress.R
@@ -55,6 +66,25 @@ fun OrangeRoundedButton(label: String, onClick: () -> Unit) {
         )
     }
 }
+
+
+@Composable
+fun WhiteSmallRoundedButton(label: String, onClick: () -> Unit) {
+    Button(
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.primary),
+        modifier = Modifier
+            .padding(10.dp, 10.dp, 5.dp, 5.dp)
+    ) {
+        Text(
+            text = label,
+            fontSize = 12.sp,
+            style = MaterialTheme.typography.titleLarge,
+            modifier = Modifier.padding(1.dp)
+        )
+    }
+}
+
 
 @Composable
 fun TransparentOrangeTextRoundedButton(label: String, onClick: () -> Unit) {
@@ -111,6 +141,27 @@ fun Content2Text(text: String, textAlign: TextAlign) {
         style = MaterialTheme.typography.titleLarge,
         modifier = Modifier
             .padding(20.dp, 5.dp)
+    )
+}
+
+@Composable
+fun normalText(text: String, textAlign: TextAlign, fontSize: TextUnit) {
+    Text(
+        text = text,
+        textAlign = textAlign,
+        fontSize = fontSize,
+        style = MaterialTheme.typography.titleLarge
+    )
+}
+
+@Composable
+fun boldText(text: String, textAlign: TextAlign, fontSize: TextUnit) {
+    Text(
+        text = text,
+        textAlign = textAlign,
+        fontSize = fontSize,
+        fontWeight = FontWeight.Bold,
+        style = MaterialTheme.typography.titleLarge
     )
 }
 
@@ -197,6 +248,29 @@ fun FilledCustomButton(imageIcon: Int, onClick: () -> Unit) {
 }
 
 @Composable
+fun GrayFilledSimpleButton(imageIcon: Int, onClick: () -> Unit) {
+    IconButton(
+        onClick = onClick,
+        modifier = Modifier
+            .clip(RoundedCornerShape(50.dp))
+            .size(40.dp),
+        colors = IconButtonDefaults.iconButtonColors(
+            containerColor = MaterialTheme.colorScheme.secondaryContainer
+        )
+    ) {
+        Icon(
+            painterResource(id = imageIcon),
+            contentDescription = "",
+            tint = MaterialTheme.colorScheme.onSecondaryContainer,
+            modifier = Modifier
+                .size(40.dp)
+                .padding(10.dp)
+        )
+    }
+}
+
+
+@Composable
 fun subjectImage(image: Int) {
     Image(
         painter = painterResource(id = image),
@@ -234,9 +308,4 @@ fun textBetweenTwoLines(text: String) {
                 .background(Color.LightGray)
         )
     }
-}
-
-@Composable
-fun otpSingleBox(text : String) {
-    Text(text = text, Modifier.border(1.dp, Color.LightGray, RoundedCornerShape(50.dp)).size(50.dp))
 }

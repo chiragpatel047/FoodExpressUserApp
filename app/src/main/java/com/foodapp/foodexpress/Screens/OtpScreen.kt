@@ -40,7 +40,6 @@ import com.foodapp.foodexpress.Components.ContentText
 import com.foodapp.foodexpress.Components.OrangeRoundedButton
 import com.foodapp.foodexpress.Components.OutlinedCustomImageButton
 import com.foodapp.foodexpress.Components.OutlinedSimpleImageButton
-import com.foodapp.foodexpress.Components.otpSingleBox
 import com.foodapp.foodexpress.R
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -164,7 +163,8 @@ fun OtpScreen(navController: NavController) {
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(20.dp, 2.dp, 20.dp, 2.dp).clickable {
+                    .padding(20.dp, 2.dp, 20.dp, 2.dp)
+                    .clickable {
 
                     }
             )

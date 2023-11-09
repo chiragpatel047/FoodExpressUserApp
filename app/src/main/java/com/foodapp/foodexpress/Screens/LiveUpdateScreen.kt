@@ -32,7 +32,6 @@ fun LiveUpdateScreen(navController: NavController) {
 
         OrangeRoundedButton(label = "Turn on Notification") {
             navController.navigate("main")
-
         }
         TransparentOrangeTextRoundedButton(label = "Now now") {
             navController.navigate("main")

@@ -40,28 +40,28 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun App(){
+    fun App() {
         val navController = rememberNavController()
-        NavHost(navController = navController, startDestination = "starter"){
-            composable(route = "starter"){
+        NavHost(navController = navController, startDestination = "main") {
+            composable(route = "starter") {
                 StarterScreen(navController)
             }
-            composable(route = "onBoard"){
+            composable(route = "onBoard") {
                 OnBoardingScreen(navController)
             }
-            composable(route = "login"){
+            composable(route = "login") {
                 LoginScreen(navController)
             }
-            composable(route = "otp"){
+            composable(route = "otp") {
                 OtpScreen(navController)
             }
-            composable(route = "enableLocation"){
+            composable(route = "enableLocation") {
                 EnableLoactionScreen(navController)
             }
-            composable(route = "liveUpdate"){
+            composable(route = "liveUpdate") {
                 LiveUpdateScreen(navController)
             }
-            composable(route = "main"){
+            composable(route = "main") {
                 MainScreen(navController)
             }
         }
