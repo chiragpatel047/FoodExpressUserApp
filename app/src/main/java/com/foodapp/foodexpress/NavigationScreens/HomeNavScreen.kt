@@ -43,8 +43,10 @@ import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.foodapp.foodexpress.Components.CategorySingle
 import com.foodapp.foodexpress.Components.DishSingle
+import com.foodapp.foodexpress.Components.FilteredChip
 import com.foodapp.foodexpress.Components.GrayFilledSimpleButton
 import com.foodapp.foodexpress.Components.HeadingText
 import com.foodapp.foodexpress.Components.OnBoard
@@ -60,7 +62,7 @@ import com.foodapp.foodexpress.R
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun HomeNavScreen() {
+fun HomeNavScreen(navController: NavController) {
 
     var catList: ArrayList<CatModel> = ArrayList()
     var dishList: ArrayList<DishModel> = ArrayList()
@@ -134,9 +136,7 @@ fun HomeNavScreen() {
                     )
                     Spacer(modifier = Modifier.padding(2.dp))
                     boldText(
-                        text = "Surat City, India",
-                        textAlign = TextAlign.Center,
-                        fontSize = 14.sp
+                        text = "Surat City, India", textAlign = TextAlign.Center, fontSize = 14.sp
                     )
                     Spacer(modifier = Modifier.padding(2.dp))
                     Icon(
@@ -160,8 +160,7 @@ fun HomeNavScreen() {
                     width = 1.dp,
                     color = MaterialTheme.colorScheme.outlineVariant,
                     shape = RoundedCornerShape(50.dp)
-                ),
-            verticalAlignment = Alignment.CenterVertically
+                ), verticalAlignment = Alignment.CenterVertically
         ) {
             Spacer(modifier = Modifier.padding(4.dp))
             Icon(
@@ -209,8 +208,7 @@ fun HomeNavScreen() {
         )
 
         val pagerState = rememberPagerState(
-            initialPage = 0,
-            initialPageOffsetFraction = 0f
+            initialPage = 0, initialPageOffsetFraction = 0f
         ) {
             3
         }
@@ -264,13 +262,11 @@ fun HomeNavScreen() {
 
         restaurantList.forEach {
             RestaurantSingle(
-                it.resImage,
-                it.resName,
-                it.resTopItems,
-                it.resRating,
-                it.resAddress
-            )
-        }
+                it.resImage, it.resName, it.resTopItems, it.resRating, it.resAddress
+            ) {
+                navController.navigate("fullRestaurant")
+            }
 
+        }
     }
 }

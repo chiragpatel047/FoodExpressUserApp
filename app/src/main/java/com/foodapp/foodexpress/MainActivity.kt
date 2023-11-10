@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.foodapp.foodexpress.Screens.EnableLoactionScreen
+import com.foodapp.foodexpress.Screens.FullRestaurantScreen
 import com.foodapp.foodexpress.Screens.LiveUpdateScreen
 import com.foodapp.foodexpress.Screens.LoginScreen
 import com.foodapp.foodexpress.Screens.MainScreen
@@ -42,7 +43,7 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun App() {
         val navController = rememberNavController()
-        NavHost(navController = navController, startDestination = "starter") {
+        NavHost(navController = navController, startDestination = "main") {
             composable(route = "starter") {
                 StarterScreen(navController)
             }
@@ -63,6 +64,9 @@ class MainActivity : ComponentActivity() {
             }
             composable(route = "main") {
                 MainScreen(navController)
+            }
+            composable(route = "fullRestaurant") {
+                FullRestaurantScreen(navController = navController)
             }
         }
     }

@@ -2,6 +2,7 @@ package com.foodapp.foodexpress.Components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,7 +39,8 @@ fun RestaurantSingle(
     resName: String,
     resTopItems: String,
     resRating: String,
-    resAddress: String
+    resAddress: String,
+    onclick: () -> Unit
 ) {
 
     Column(
@@ -48,6 +50,7 @@ fun RestaurantSingle(
             .shadow(5.dp, RoundedCornerShape(20.dp))
             .clip(RoundedCornerShape(20.dp))
             .background(MaterialTheme.colorScheme.primaryContainer)
+            .clickable(true, "", null, onclick)
     ) {
         Box(
             modifier = Modifier
@@ -69,14 +72,25 @@ fun RestaurantSingle(
                 horizontalAlignment = Alignment.End
             ) {
 
-                Icon(
-                    painter = painterResource(id = R.drawable.favicon),
-                    contentDescription = "",
-                    tint = Color(0xFFFFCB25),
+                Row(
                     modifier = Modifier
-                        .size(15.dp)
-                        .padding(8.dp)
-                )
+                        .size(60.dp)
+                        .padding(10.dp)
+                        .clip(RoundedCornerShape(60.dp))
+                        .background(Color(0x99000000))
+                ) {
+
+                    Icon(
+                        painter = painterResource(id = R.drawable.outlinedfavicon),
+                        contentDescription = "",
+                        tint = Color.White,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(10.dp)
+
+                    )
+                }
+
 
                 Row(
                     modifier = Modifier
@@ -146,3 +160,4 @@ fun RestaurantSingle(
     }
 
 }
+

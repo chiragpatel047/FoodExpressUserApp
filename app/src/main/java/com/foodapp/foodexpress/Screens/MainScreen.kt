@@ -58,7 +58,7 @@ fun MainScreen(navController: NavController) {
         ) {
             when (currentNavScreen.value) {
                 NavigationItem.HomeNav.route -> {
-                    HomeNavScreen()
+                    HomeNavScreen(navController)
                 }
 
                 NavigationItem.OrderNav.route -> {
