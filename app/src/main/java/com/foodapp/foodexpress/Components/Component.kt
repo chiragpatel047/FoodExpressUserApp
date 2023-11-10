@@ -380,3 +380,24 @@ fun FilteredChip(text: String) {
     )
 }
 
+@Composable
+fun FilledWhiteCustomButton(imageIcon: Int, onClick: () -> Unit) {
+    IconButton(
+        onClick = onClick,
+        modifier = Modifier
+            .clip(RoundedCornerShape(40.dp))
+            .size(40.dp),
+        colors = IconButtonDefaults.iconButtonColors(
+            containerColor = Color.White
+        )
+    ) {
+        Icon(
+            painterResource(id = imageIcon),
+            contentDescription = "",
+            tint = Color.DarkGray,
+            modifier = Modifier
+                .size(40.dp)
+                .padding(12.dp)
+        )
+    }
+}
