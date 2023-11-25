@@ -274,6 +274,47 @@ fun GrayFilledSimpleButton(imageIcon: Int, onClick: () -> Unit) {
     }
 }
 
+@Composable
+fun CartButton(isAdded: Boolean, onClick: () -> Unit) {
+    IconButton(
+        onClick = onClick,
+        modifier = Modifier
+            .clip(RoundedCornerShape(50.dp))
+            .size(40.dp),
+        colors =
+        if (isAdded) {
+            IconButtonDefaults.iconButtonColors(
+                containerColor = MaterialTheme.colorScheme.primary
+            )
+        } else {
+            IconButtonDefaults.iconButtonColors(
+                containerColor = MaterialTheme.colorScheme.secondary
+            )
+        }
+
+    ) {
+        Icon(
+
+            painterResource(
+                id = if (isAdded) {
+                    R.drawable.carticon
+                } else {
+                    R.drawable.addtocarticon
+                }
+            ),
+            contentDescription = "",
+            tint =
+            if (isAdded) {
+                MaterialTheme.colorScheme.onPrimary
+            } else {
+                MaterialTheme.colorScheme.onSecondary
+            },
+            modifier = Modifier
+                .size(40.dp)
+                .padding(10.dp)
+        )
+    }
+}
 
 @Composable
 fun subjectImage(image: Int) {
